@@ -1,0 +1,41 @@
+<nav class="nav-bar" data-id="header">
+  <div class="pop-up-categories-menu">
+    <div class="categories" (click)="categoriesClick()">
+      <mat-icon>menu</mat-icon>
+    </div>
+    <div [@menuToggle]="isCategoriesOpen ? 'open' : 'close'" class="menu">
+      <h3>Categories</h3>
+      <ul>
+        <li class="nav-item" (click)="categoryClick('test')">
+          <img src="" /><a>test</a>
+        </li>
+
+        <li class="nav-item" (click)="categoryClick('test1')">
+          <img src="" /><a>test1</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <img src="/assets/images/header/9.png" class="logo" />
+  <a href="#"></a>
+  <div class="search">
+    <input type="text" class="search-box" placeholder="search brand, product" />
+    <button class="search-button">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+  <div class="nav-items">
+    <!-- <div class="pages"> -->
+    <a href="#">Page1</a> <a href="#">Page2</a> <a href="#">Page3</a>
+    <!-- </div> -->
+  </div>
+
+  <button class="profile" (click)="profileMenuClick()">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <app-profile *ngIf="isAuthorized" [user]="user"></app-profile>
+  <app-authorization-menu
+    *ngIf="!isAuthorized"
+    (userAuthEvent)="setUser($event)"
+  ></app-authorization-menu>
+</nav>

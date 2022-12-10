@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+@use "/src/app/modules/header/components/header.theming.scss" as header;
+@use "/src/custom-palettes.scss" as palettes;
+
+@include mat.core();
+
+$light-accent: mat.define-palette(palettes.$custom-purple-palette);
+$light-primary: mat.define-palette(
+  palettes.$custom-amethyst-palette,
+  400,
+  300,
+  500
+);
+$light-warn: mat.define-palette(mat.$red-palette);
+$light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $light-primary,
+      accent: $light-accent,
+      warn: $light-warn,
+    ),
+  )
+);
+$dark-primary: mat.define-palette(
+  palettes.$custom-amethyst-palette,
+  200,
+  300,
+  500
+);
+$dark-accent: mat.define-palette(palettes.$custom-purple-palette);
+$dark-warn: mat.define-palette(mat.$red-palette);
+$dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $dark-primary,
+      accent: $dark-accent,
+      warn: $dark-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($light-theme);
+@include header.theme($light-theme);
+
+.dark-theme {
+  @include mat.all-component-themes($dark-theme);
+  @include header.theme($dark-theme);
+}
+
+:root {
+  /*
+  --clr-primary: #6aeeb5;
+  --clr-primary-dark: #70757d;
+  --clr-gray100: #e2ebfc;
+  --clr-gray200: #ccd4e3;
+  --clr-hoverclr: #ff5d94;
+*/
+  --radius: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

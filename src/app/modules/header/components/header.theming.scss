@@ -1,0 +1,48 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  @if $color-config != null {
+    @include color($theme);
+  }
+
+  $typography-config: mat.get-typography-config($theme);
+  @if $typography-config != null {
+    @include typography($theme);
+  }
+}
+
+@mixin color($theme) {
+  $color-config: mat.get-color-config($theme);
+  // Get the primary color palette from the color-config.
+  $primary-palette: map.get($color-config, "primary");
+  $accent-palette: map.get($color-config, "accent");
+  .nav-bar {
+    background-color: mat.get-color-from-palette($primary-palette, 500);
+  }
+  .pop-up-categories-menu .menu {
+    background-color: mat.get-color-from-palette($primary-palette, 100);
+  }
+  .nav-items a {
+    color: mat.get-color-from-palette($primary-palette, 50);
+  }
+  .search-box {
+    border: 2px solid mat.get-color-from-palette($primary-palette, 50);
+  }
+  .search-button {
+    background: mat.get-color-from-palette($primary-palette, 50);
+  }
+  .search-button .mat-icon {
+    color: mat.get-color-from-palette($primary-palette, 200);
+  }
+  .search-box::placeholder {
+    color: mat.get-color-from-palette(map-get($primary-palette, contrast), 50);
+  }
+  .nav a:hover {
+    color: white;
+  }
+  .mat-icon {
+    color: mat.get-color-from-palette($primary-palette, 50);
+  }
+}

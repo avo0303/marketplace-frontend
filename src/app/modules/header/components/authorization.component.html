@@ -1,0 +1,70 @@
+<div [@menuToggle]="isOpen ? 'open' : 'close'" class="autorization-pop-up">
+  <div class="content-body">
+    <div class="content">
+      <button class="close-button" name="close-button" (click)="toggle()">
+        <img src="/assets/images/header/close_icon.png" />
+      </button>
+      <div class="switch-buttons">
+        <button
+          type="button"
+          class="option"
+          name="registration_option"
+          (click)="switchForm('registration')"
+        >
+          Sign up
+        </button>
+        <button
+          type="button"
+          class="option"
+          name="autorization_option"
+          (click)="switchForm('login')"
+        >
+          Sign in
+        </button>
+      </div>
+      <div *ngIf="currentForm == 'registration'" class="registration-form">
+        <form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
+          <div class="txt_field">
+            <label for="email">Email</label>
+            <input name="email" type="text" id="email" class="input" />
+          </div>
+          <div class="txt_field">
+            <label for="username" th:text="#{label.username}">Username</label>
+            <input name="username" type="text" id="username" class="input" />
+          </div>
+          <div class="txt_field">
+            <label for="password" th:text="#{label.password}">Password</label>
+            <input
+              name="password"
+              type="password"
+              id="password"
+              class="input js-input-password"
+            />
+          </div>
+          <div class="txt_field">
+            <label>Подтвердите пароль</label>
+            <input name="secondPassword" type="password" class="input" />
+          </div>
+          <input
+            type="submit"
+            class="submit-button"
+            value="Зарегистрироваться"
+          />
+        </form>
+      </div>
+      <div *ngIf="currentForm == 'login'" class="login-form">
+        <form (ngSubmit)="onSubmit(signInForm)" #signInForm="ngForm">
+          <div class="txt_field">
+            <label for="username">Username</label>
+            <input name="username" type="text" class="input" ngModel />
+          </div>
+          <div class="txt_field">
+            <label for="password">Password</label>
+            <input name="password" type="password" class="input" ngModel />
+          </div>
+          <input type="submit" class="submit-button" value="Войти" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

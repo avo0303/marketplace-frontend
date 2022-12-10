@@ -1,0 +1,13 @@
+<div class="products-container">
+  <app-product
+    *ngFor="let productCard of products"
+    [productCard]="productCard"
+  ></app-product>
+</div>
+<mat-paginator
+  [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  aria-label="Select page"
+>
+</mat-paginator>

@@ -1,0 +1,32 @@
+<div class="profile-pop-up-menu">
+  <div [@menuToggle]="isOpen ? 'open' : 'close'" class="menu">
+    <div class="pop-up-profile-img">
+      <img src="assets/images/header/account_circle.png" />
+      <!-- <img th:src=${user.imageURL} th:if="${user.imageURL}"> -->
+    </div>
+    <h3>{{ user?.name }}</h3>
+    <p>{{ user?.email ? user?.email : user?.phoneNumber }}</p>
+    <button type="button" name="account management">account management</button>
+    <ul>
+      <li class="nav-item">
+        <img
+          th:src="@{/resources/img/9.png}"
+          src="/onlinestore/src/main/webapp/resources/img/account_circle.png"
+        /><a href="#">Cart</a>
+      </li>
+      <li class="nav-item">
+        <img
+          th:src="@{/resources/img/9.png}"
+          src="/onlinestore/src/main/webapp/resources/img/account_circle.png"
+        /><a href="#">Orders</a>
+      </li>
+      <li class="nav-item">
+        <img
+          th:src="@{/resources/img/9.png}"
+          src="/onlinestore/src/main/webapp/resources/img/account_circle.png"
+        /><a href="#">Favorites</a>
+      </li>
+    </ul>
+    <button type="button" class="logout-button">log out</button>
+  </div>
+</div>

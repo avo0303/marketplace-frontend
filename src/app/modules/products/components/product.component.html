@@ -1,0 +1,18 @@
+<div class="product-card">
+  <div class="product-image">
+    <img
+      [src]="defaultVariation?.images?.at(0)?.url"
+      class="product-thumb"
+      alt=""
+    />
+    <button class="card-btn" type="button" name="button">
+      add to wishlist
+    </button>
+  </div>
+  <div class="product-info">
+    <h2 class="product-brand">{{ productCard?.name }}</h2>
+    <p class="product-short-description">{{ productCard?.shortDescription }}</p>
+    <span class="price">{{ defaultVariation?.discountedPrice }}</span>
+    <span class="actual-price">{{ defaultVariation?.actualPrice }}</span>
+  </div>
+</div>
